@@ -1,0 +1,57 @@
+.input_score{
+	float: left;
+	height: auto;
+	border:none;
+	padding: 2px 2px 0px;
+	box-shadow: 1px 1px 5px rgba(16,23,44,0.2);
+	margin: 5px 5px;
+}
+
+#input_score1{
+	width: 300px;
+	
+}
+#input_score2{
+	width: auto;
+	
+}
+
+.detail{
+	border:1px solid grey;
+	min-height: 10px;
+	width: 100%;
+}
+
+/*     ROTATION                 */
+*{
+  border: 1px red solid;
+}
+table,td {
+  border-collapse: collapse;
+  border: 1px black solid;
+}
+.rotate{
+	height: 160px;
+  margin: 0;
+}
+tr:nth-of-type(5) td:nth-of-type(1) {
+  /*visibility: hidden;*/
+}
+.rotate{
+  width: 5px;
+}
+
+.rotate {
+  /* FF3.5+ */
+  -moz-transform: rotate(-45.0deg);
+  /* Opera 10.5 */
+  -o-transform: rotate(-45.0deg);
+  /* Saf3.1+, Chrome */
+  -webkit-transform: rotate(-45.0deg);
+  /* IE6,IE7 */
+  filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+  /* IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+  /* Standard */
+  transform: rotate(-45.0deg);
+}

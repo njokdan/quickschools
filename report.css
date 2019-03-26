@@ -1,0 +1,216 @@
+*{
+				box-sizing:border-box;
+				padding: 0;
+				margin: 0;
+			}
+
+			body{
+				margin: 0;
+			}
+
+
+			.container{
+				border:1px solid grey;
+				width: 850px;
+				height: auto;
+				padding: 15px;
+				margin: 15px auto;
+			}
+			.report{
+				border:1px solid rgba(117,117,117 ,.6);
+				width: 100%;
+				height: auto;
+				padding-top: 0;
+				
+				
+			}
+
+			.report .part{
+				width: 100%;
+				height: auto;
+				padding: 5px 5px;
+				/*border:1px solid grey;*/
+				margin-top: 2px;
+				margin-bottom: 2px;
+				clear: both;
+			}
+
+			.report .part:nth-child(3){				
+				margin-top: 0;
+				margin-bottom: 2px;
+			}
+
+			.report .ruler{
+				width: 100%;
+				background-color: grey;
+				border:1px solid grey;
+				margin: 0 auto;
+			}
+			.report .part#head{
+				border-top-right-radius: 20px;
+				border-top-left-radius: 20px;
+			}
+
+			.report .part#head,.report .part#foot{
+				background-color: rgba(0,0,0,.2);
+				padding: 20px 0;
+			}
+
+			.report #logo,.report #school_detail{
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			.report #school_detail{
+				background-color: rgba(245,245,245 ,1);
+			}
+			.report .part img{
+				height: 90px;
+				width: 90px;
+				padding: 5px;
+
+			}
+
+			.info{
+				/*border:1px solid grey;*/
+				max-width: 300px;
+				margin: 0 10px;	
+				border:none;			
+			}
+
+			.report caption{
+				padding: 5px;
+			}
+			/* Biodata */
+			table.biodata{
+				border-collapse: collapse;
+				width: 90%;
+				margin: 0 auto;
+			}
+			table.biodata,table.biodata td{				
+				/*border:1px solid grey;*/
+			}
+
+			table.biodata tr td:nth-child(1){
+				width: 100px;
+				font-weight: bold;
+			}
+
+			table.biodata tr td{
+				padding: 5px;
+			}
+
+			table.biodata tr td.pics{
+				text-align: right;
+			}
+
+			table.biodata tr td.pics img{
+				height: 120px;
+				width: 120px;
+				padding: 2px;
+				border:1px solid rgba(117,117,117 ,.6);
+
+			}
+
+			/*//////////Result Data//////////////////////////*/
+			.result_info{
+				text-align: center;
+				vertical-align: middle;
+			}
+			table.result_data{
+				border-collapse: collapse;
+				width: 100%;
+				margin: 0 auto;
+			}
+			table.result_data,table.result_data th,table.result_data td{				
+				border:1px solid rgba(117,117,117 ,.6);
+			}
+
+			table.result_data tr:nth-child(even){
+				background-color: rgba(117,117,117 ,.3);
+			}
+
+			table.result_data th,table.result_data td{
+				text-align: center;
+				vertical-align: middle;
+				padding: 2px;
+			}
+			table.result_data td:nth-child(2){
+				text-align: left;
+			}
+
+			/*//////////////Remark//////////////////////*/
+
+
+			.part#remark table.rem{
+				border:1px solid rgba(117,117,117 ,.7);
+				float:right;
+				background-color:rgba(117,117,117 ,.3);
+			}
+
+			.part#remark table.rem td:nth-child(1),.part#remark table.rem td:nth-child(3){
+				font-weight: bolder;
+			}
+			/* Comment Area */
+			.report .part#comment_area table.comments{
+				border-collapse: collapse;
+				width: 100%;
+				margin: 0 auto;
+			}
+
+			.report .part#comment_area table.comments,.report .part#comment_area table.comments th,.report .part#comment_area table.comments td{				
+				border:1px solid rgba(117,117,117 ,.6);
+			}
+
+			.report .part#comment_area table.comments tr td:nth-child(1){
+				width: 220px;
+				font-weight: bold;
+			}
+
+			.report .part#comment_area table.comments tr th,.report .part#comment_area table.comments tr td{
+				padding: 2px;
+			}
+			.report .part#comment_area .info{
+				border:1px solid rgba(117,117,117 ,.6);
+				max-width: 300px;
+				border:none;			
+			}
+			.report .part#comment_area p{
+				text-align: center;
+				vertical-align: middle;
+				margin: 20px auto 5px;
+			}
+			.container .report .com{
+				padding: 5px;
+			}
+
+			/*///////////////////////////////////////////*/
+			.report .part#benchmark{
+				border-top: 1px solid rgba(189,189,189 ,1);
+			}
+
+			table.bench{
+				border-collapse: collapse;
+				width: 60%;
+				margin: 0 auto;
+			}
+			table.bench,table.bench th,table.bench td{				
+				border:1px solid rgba(189,189,189 ,1);
+			}
+
+			table.bench th,table.bench td{
+				text-align: center;
+				vertical-align: middle;
+				padding: 2px;
+			}
+
+			table.bench tr:nth-child(even){
+				background-color: rgba(245,245,245 ,1);
+			}
+
+
+
+			.report .part#foot{
+				border-bottom-right-radius: 20px;
+				border-bottom-left-radius: 20px;				
+			}
