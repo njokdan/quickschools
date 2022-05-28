@@ -180,7 +180,7 @@ if((isset($_GET['role'])) && ($_GET['role']=$role)){
                   </td>
                   <td>
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary ajax" name="getallstudent" >&nbsp;<i class="fa fa-spin fa-refresh" ></i>&nbsp; Fetch Student</button>
+                      <button type="submit" class="btn btn-primary ajax" name="getallstudent" >&nbsp;<!--i class="fa fa-spin fa-refresh" ></i-->&nbsp; Fetch Student</button>
                       
                     </div>
                   </td>

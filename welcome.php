@@ -4,7 +4,8 @@ include('connect.php');
 include("RandomStringGenerator.php");
 include('function.php');
 include('process.php');
-$type = $role = $dt='';
+$type = $role = $dt= $stclasspop='';
+
 ///////////////////VARIABLES/////////////////////////
 //Session Bios
 //Session
@@ -27,6 +28,13 @@ if((isset($_GET['role'])) && ($_GET['role']=$role)){
 
 
 }
+
+
+//if($_SESSION['type'] === 'Staff'){
+  $stclasspop = getStudentPopPerClassPerSessionPerTerm("Primary 1", "2017/2018", "1st");
+
+  //$stclasspop = getStudentPop($class, $term, $session);
+//}
 
 
 // if(((isset($_GET['r'])) && ($_GET['r'] =='K45tg5p679uojg4d56ghnbSR098877766@34554333455dfgfgfgfseafmbnnvgtyjbnvfgbpo09oi87j'))){ 
@@ -178,7 +186,7 @@ if((isset($_GET['role'])) && ($_GET['role']=$role)){
 
             <div class="info-box-content" style="text-align:center;">
               <span class="info-box-text">Class <br>of</span>
-              <span class="info-box-number">20 <small>Std.</small></span>
+              <span class="info-box-number"><?php echo $stclasspop; ?> <small>Std.</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>

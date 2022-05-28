@@ -135,6 +135,7 @@ if((isset($_GET['role'])) && ($_GET['role']=$role)){
         <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
+              <!-- <?php //$_SERVER['PHP_SELF'] ?> -->
               <h3 class="box-title">Profile 
                 <form role="form" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" method="POST">
                   <input type="text" name="uid" value="<?php if(isset($_SESSION['s_regno'])){ echo getStudentId($_SESSION['s_regno']);} ?>">

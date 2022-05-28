@@ -1,5 +1,5 @@
 <?php
-
+// set_time_limit(500);
 function clean($str) {
 	global $servr;
 		$str = @trim($str);
@@ -47,12 +47,13 @@ function getrank($arrayed,$rank_for){
   return $resolved;
 
 }
-
+         //register($firstname,$middlename,$lastname,$gender,$dateofbirth,$class,$session,$term,$code,$username,$password,$email,$phone,$degree,$salary,$address,$type,$role,$status,$reason,$target_file);
 function register($uid,$sid,$firstname,$middlename,$lastname,$gender,$dateofbirth,$class,$session,$term,$regno,$username,$password,$email,$phone,$degree,$salary,$address,$type,$role,$status,$reason,$target_file)
 {
 	$dt = '';
 	global $servr;
 	$dt = date("d-m-Y");
+
 
 	$sql = "INSERT INTO student(uid,sid,firstname,middlename,lastname,gender,dateofbirth,class,session,term,regno,username,password,email,phone,degree,salary,address,type,role,status,reason,enrolled)VALUES('$uid','$sid','$firstname','$middlename','$lastname','$gender','$dateofbirth','$class','$session','$term','$regno','$username','$password','$email','$phone','$degree','$salary','$address','$type','$role','$status','$reason','$dt')";
 	$query = mysqli_query($servr,$sql);
@@ -93,7 +94,7 @@ function createSchoolInfo($uid,$name,$address,$website,$email,$contact,$year,$te
 	{
 		$msg = "Values added";
 	}
-	
+
 	return $msg;
 }
 
@@ -120,7 +121,7 @@ function getSchoolInfo($sid){
 						'year' => $row['current_year'],
 						'term' => $row['current_term'],
 						'logo' => $row['logo'],
-						'period' => $row['period']);	
+						'period' => $row['period']);
 		}
 	}
 	return $info;
@@ -131,7 +132,7 @@ function getSchoolName($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['schoolname'];
 
 	}
@@ -142,7 +143,7 @@ function getSchoolAddress($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['address'];
 
 	}
@@ -154,7 +155,7 @@ function getSchoolEmail($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['email'];
 
 	}
@@ -166,7 +167,7 @@ function getSchoolWebsite($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['website'];
 
 	}
@@ -178,7 +179,7 @@ function getSchoolContact($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['contact'];
 
 	}
@@ -190,7 +191,7 @@ function getSchoolYear($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['current_year'];
 
 	}
@@ -202,7 +203,7 @@ function getSchoolTerm($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['current_term'];
 
 	}
@@ -214,7 +215,7 @@ function getSchoolLogo($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['logo'];
 
 	}
@@ -226,7 +227,7 @@ function getSchoolCreated($sid){
 	$sql = "SELECT * FROM school WHERE schoolid='$sid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$school=$row['period'];
 
 	}
@@ -256,7 +257,7 @@ function getAllSchoolInfo(){
 						'year' => $row['current_year'],
 						'term' => $row['current_term'],
 						'logo' => $row['logo'],
-						'period' => $row['period']);	
+						'period' => $row['period']);
 		}
 	}
 	return $info;
@@ -285,7 +286,7 @@ function getSchoolInfoByCreator($uid){
 						'year' => $row['current_year'],
 						'term' => $row['current_term'],
 						'logo' => $row['logo'],
-						'period' => $row['period']);	
+						'period' => $row['period']);
 		}
 	}
 	return $info;
@@ -308,7 +309,7 @@ function assignSchool($sid,$toid,$byid,$status){
 	{
 		$msg = "Values added";
 	}
-	
+
 	return $msg;
 }
 
@@ -330,7 +331,7 @@ function addComment($uid, $studreg, $class, $term, $acadyr, $comment){
 	{
 		$msg = "Values added";
 	}
-	
+
 	return $msg;
 }
 function getComment($studreg, $term, $acadyr){
@@ -341,7 +342,7 @@ function getComment($studreg, $term, $acadyr){
 	$sql = "SELECT comments FROM comment WHERE studentid='$stid' and termid='$trmid' and sessionid='$sessid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$comment=$row['comments'];
 
 	}
@@ -360,7 +361,7 @@ function getStaffComment($staffid, $studreg, $term, $acadyr,$staffrole){
 			$sql = "SELECT comments FROM comment WHERE staffid='$staffid' and studentid='$stid' and termid='$trmid' and sessionid='$sessid'";
 			$result = mysqli_query($servr,$sql);
 			if ($row = mysqli_fetch_array($result)) {
-				
+
 				$comment=$row['comments'];
 
 			}
@@ -374,17 +375,14 @@ function getStaffComment1($studreg, $term, $acadyr,$staffrole){
 	$stid = getStudentId($studreg);
 	$trmid = getTermId($term);
 	$sessid = getSessionid($acadyr);
-
 	$sql = "SELECT * FROM comment WHERE studentid='$stid' and termid='$trmid' and sessionid='$sessid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
 		$staffid = $row['staffid'];
 		$role = getRole($staffid);
 		if($role==$staffrole){
 			$comment=$row['comments'];
 		}
-
 	}
 	return $comment;
 }
@@ -398,7 +396,7 @@ function getStaffComment1Created($studreg, $term, $acadyr,$staffrole){
 	$sql = "SELECT * FROM comment WHERE studentid='$stid' and termid='$trmid' and sessionid='$sessid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$staffid = $row['staffid'];
 		$role = getRole($staffid);
 		if($role==$staffrole){
@@ -420,7 +418,7 @@ function updateComment($uid, $studreg, $class, $term, $acadyr, $comment){
 	$sessid = getSessionid($acadyr);
 	//staffid,studentid,classid,termid,sessionid,comments,period
 	$sql ="UPDATE comment SET comments = '$comment', period = '$dt' where studentid = '$stid' and termid = '$trmid' and sessionid = '$sessid'";
-	// $sql = "INSERT INTO photo(uid,location,created)VALUES('$uid','$location','$dt')";	
+	// $sql = "INSERT INTO photo(uid,location,created)VALUES('$uid','$location','$dt')";
 	$query = mysqli_query($servr,$sql);
 	if(!$query)
 	{
@@ -430,7 +428,7 @@ function updateComment($uid, $studreg, $class, $term, $acadyr, $comment){
 	{
 		$msg = "Values updated";
 	}
-	
+
 	return $msg;
 }
 
@@ -439,7 +437,7 @@ function addPhoto($uid,$location){
 	$dt = '';
 	global $servr;
 	$dt = date("d-m-Y");
-	$sql = "INSERT INTO photo(uid,location,created)VALUES('$uid','$location','$dt')";	
+	$sql = "INSERT INTO photo(uid,location,created)VALUES('$uid','$location','$dt')";
 	$query = mysqli_query($servr,$sql);
 	if(!$query)
 	{
@@ -449,7 +447,7 @@ function addPhoto($uid,$location){
 	{
 		$msg = "Values added";
 	}
-	
+
 	return $msg;
 }
 
@@ -458,7 +456,7 @@ function getPhoto($uid){
 	$sql = "SELECT location FROM photo WHERE uid='$uid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$photo=$row['location'];
 
 	}
@@ -471,7 +469,7 @@ function getPhotoByRegNo($regno){
 	$sql = "SELECT location FROM photo WHERE uid='$uid'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
-		
+
 		$photo=$row['location'];
 
 	}
@@ -482,8 +480,20 @@ function updatePhoto($uid,$location){
 	$dt = '';
 	global $servr;
 	$dt = date("d-m-Y");
+	$sql = "SELECT location FROM photo WHERE uid='$uid'";
+	$result = mysqli_query($servr,$sql);
+	if ($row = mysqli_fetch_array($result)) {
+		$photo=$row['location'];
+	}
+	if (file_exists($photo)) {
+		unlink($photo);
+		echo 'File '.$photo.' has been deleted';
+	} else {
+		echo 'Could not delete '.$photo.', file does not exist';
+	}
+
 	$sql ="UPDATE photo SET location = '$location', created = '$dt' where uid = '$uid'";
-	// $sql = "INSERT INTO photo(uid,location,created)VALUES('$uid','$location','$dt')";	
+	// $sql = "INSERT INTO photo(uid,location,created)VALUES('$uid','$location','$dt')";
 	$query = mysqli_query($servr,$sql);
 	if(!$query)
 	{
@@ -493,7 +503,8 @@ function updatePhoto($uid,$location){
 	{
 		$msg = "Values updated";
 	}
-	
+
+	//header("Location: profile.php");
 	return $msg;
 }
 
@@ -514,7 +525,7 @@ function addScore($studentid,$fullname,$class,$subject,$session,$term,$type,$sco
 	{
 		$msg = "Values added";
 	}
-	
+
 	return $msg;
 }
 
@@ -539,14 +550,8 @@ function addStudentResultComment($staffid,$studentid,$classid,$termid,$sessionid
 	{
 		$msg = "Comment added";
 	}
-	
+
 	return $msg;
-
-
-
-
-
-
 }
 
 
@@ -567,7 +572,7 @@ function addSubject($uid,$name)
 		{
 			$msg = "Subject added";
 		}
-		
+
 		return $msg;
 	}
 }
@@ -580,7 +585,7 @@ function checkSubject($uid,$name){
 
 	if($numrows>0){
 	// if ($row = mysqli_fetch_array($result)) {
-		
+
 		// $class=$row['class'];
 		return True;
 	 }
@@ -912,13 +917,15 @@ function logout(){
 function login($username,$password){
 	global $servr; $id = '';
 	$password = md5($password); 
-	$sql = "SELECT * FROM security WHERE username='$username' AND password='$password'";
+	$sql = "SELECT * FROM student WHERE username='$username' AND password='$password'";
 	$result = mysqli_query($servr,$sql);
 	if ($row = mysqli_fetch_array($result)) {
 		//session_start();
 		$id = $row['id'];
 		
 		$_SESSION['id'] = $row['id'];
+		$_SESSION['uid'] = $row['uid'];
+		$_SESSION['s_id'] = $row['sid'];
 		$_SESSION['username'] = $row['username'];
 		$_SESSION['password'] = $row['password'];
 
@@ -941,6 +948,25 @@ function login($username,$password){
 				$_SESSION['term'] = $row1['term'];
 				$_SESSION['regno'] = $row1['regno'];
 				$_SESSION['enrolled'] = $row1['enrolled'];
+
+			}
+			header("location:studentprofile.php");
+
+		}elseif($row['type']=='PARENT'){
+			$_SESSION['type'] = $row['type'];
+			$sql1 = "SELECT * FROM student WHERE studentid='$id'";
+			$result1 = mysqli_query($servr,$sql1);
+			if ($row1 = mysqli_fetch_array($result1)) {
+
+				// $_SESSION['firstname'] = $row1['firstname'];
+				// $_SESSION['lastname'] = $row1['lastname'];
+				// $_SESSION['gender'] = $row1['gender'];
+				// $_SESSION['dateofbirth'] = $row1['dateofbirth'];
+				// $_SESSION['class'] = $row1['class'];
+				// $_SESSION['session'] = $row1['session'];
+				// $_SESSION['term'] = $row1['term'];
+				// $_SESSION['regno'] = $row1['regno'];
+				// $_SESSION['enrolled'] = $row1['enrolled'];
 
 			}
 			header("location:studentprofile.php");
@@ -1208,6 +1234,16 @@ function getStudentByRegno($regno){
 		}
 	}
 	return $student;
+}
+
+function getStudentPopPerClassPerSessionPerTerm($class, $session, $term){
+	global $servr; $studenta=array();$sid='';$count=0;
+	$sql = "SELECT * FROM student WHERE class='$class' and term='$term' and session='$session'";
+	$result = mysqli_query($servr,$sql);
+
+	$rows=mysqli_num_rows($result);
+	return $rows;
+	//$numrows = mysqli_num_rows($result);
 }
 
 function getStudentByClass($classt){
@@ -1576,18 +1612,18 @@ function getExam($studentid,$class,$subject,$session,$term){
 }
 
 function getAverage1($test1,$test2,$Exam){
-	$Average='';
-	$Average = round((($test1+$test2+$Exam)/3),2);
+	$Average=0;
+	$Average = floatval(round(((int)($test1+$test2+$Exam)/3),2));
 	return $Average;
 }
 
 function getAverage($studentid,$class,$subject,$session,$term){
-	$test1=$test2=$Exam=$Average='';
-	$test1 = getTest1($studentid,$class,$subject,$session,$term);
-	$test2 = getTest2($studentid,$class,$subject,$session,$term);
-	$Exam = getExam($studentid,$class,$subject,$session,$term);
+	$test1=$test2=$Exam=$Average=0;
+	$test1 = (int)(getTest1($studentid,$class,$subject,$session,$term));
+	$test2 = (int)(getTest2($studentid,$class,$subject,$session,$term));
+	$Exam = (int)(getExam($studentid,$class,$subject,$session,$term));
 	//$Average = round((($test1+$test2+$Exam)/3),2);
-	return getAverage1($test1,$test2,$Exam);
+	return floatval(getAverage1($test1,$test2,$Exam));
 }
 
 function getGrade($grad){
@@ -1621,15 +1657,15 @@ function getGrade($grad){
 
 
 function getResult($studentid,$class,$subject,$session,$term){
-	$test1=$test2=$Exam=$Average='';
+	$test1=$test2=$Exam=$Average=0;
 	$Grade='';
 	$result = array();
-	$test1 = getTest1($studentid,$class,$subject,$session,$term);
-	$test2 = getTest2($studentid,$class,$subject,$session,$term);
-	$Exam = getExam($studentid,$class,$subject,$session,$term);
-	$Average = round((getAverage($studentid,$class,$subject,$session,$term)),1);
+	$test1 = (int)(getTest1($studentid,$class,$subject,$session,$term));
+	$test2 = (int)(getTest2($studentid,$class,$subject,$session,$term));
+	$Exam = (int)(getExam($studentid,$class,$subject,$session,$term));
+	$Average = round(floatval(getAverage($studentid,$class,$subject,$session,$term)),1);
 
-	$Grade = getGrade($Average);
+	$Grade = getGrade((int)($Average));
 	$fullname = getFullname($studentid);
 
 	$result[]=array(
@@ -1664,15 +1700,15 @@ function getClassResultByType($class,$subject,$session,$term,$type){
 		$regno = $stud['regno'];
 
 		if($type=='Test1'){
-			$score = getTest1($studentid,$class,$subject,$session,$term);
+			$score = (int)(getTest1($studentid,$class,$subject,$session,$term));
 		}
 		if($type=='Test2'){
-			$score = getTest2($studentid,$class,$subject,$session,$term);
+			$score = (int)(getTest2($studentid,$class,$subject,$session,$term));
 		}
 		if($type=='Exam'){
-			$score = getTest2($studentid,$class,$subject,$session,$term);
+			$score = (int)(getTest2($studentid,$class,$subject,$session,$term));
 		}
-		$grade = getGrade($score);
+		$grade = getGrade((int)($score));
 
 
 		$ClassResult[] = array(
@@ -1703,12 +1739,12 @@ function getClassResultBySubjectByType($class,$subject,$session,$term,$type){
 		$firstname = $stud['firstname'];
 		$lastname = $stud['lastname'];
 		$regno = $stud['regno'];
-		$Test1 = getTest1($studentid,$class,$subject,$session,$term);
-		$Test2 = getTest2($studentid,$class,$subject,$session,$term);
-		$Exam = getExam($studentid,$class,$subject,$session,$term);
-		$Total = $Test1+$Test2+$Exam;
-		$average = getAverage($studentid,$class,$subject,$session,$term);
-		$grade = getGrade($average);
+		$Test1 = (int)(getTest1($studentid,$class,$subject,$session,$term));
+		$Test2 = (int)(getTest2($studentid,$class,$subject,$session,$term));
+		$Exam = (int)(getExam($studentid,$class,$subject,$session,$term));
+		$Total = (int)($Test1+$Test2+$Exam);
+		$average = floatval(getAverage($studentid,$class,$subject,$session,$term));
+		$grade = getGrade((int)($average));
 
 
 		$ClassResult[] = array(
@@ -1743,12 +1779,12 @@ function getClassResultBySubjectByTerm($class,$subject,$session,$term){
 		$firstname = $stud['firstname'];
 		$lastname = $stud['lastname'];
 		$regno = $stud['regno'];
-		$Test1 = getTest1($studentid,$class,$subject,$session,$term);
-		$Test2 = getTest2($studentid,$class,$subject,$session,$term);
-		$Exam = getExam($studentid,$class,$subject,$session,$term);
-		$Total = $Test1+$Test2+$Exam;
-		$average = getAverage($studentid,$class,$subject,$session,$term);
-		$grade = getGrade($average);
+		$Test1 = (int)(getTest1($studentid,$class,$subject,$session,$term));
+		$Test2 = (int)(getTest2($studentid,$class,$subject,$session,$term));
+		$Exam = (int)(getExam($studentid,$class,$subject,$session,$term));
+		$Total = (int)($Test1+$Test2+$Exam);
+		$average = floatval(getAverage($studentid,$class,$subject,$session,$term));
+		$grade = getGrade((int)($average));
 
 
 		$ClassResult[] = array(
@@ -1767,7 +1803,7 @@ function getClassResultBySubjectByTerm($class,$subject,$session,$term){
 					'total' =>$Total,
 					'average' =>$average,
 					'grade' =>$grade);
-		
+
 		$Sno++;
 	}
 	return $ClassResult;
@@ -1780,8 +1816,8 @@ function getPosition($Studentid,$class,$Subject,$session,$term){
 	$studentSubjectStack = array();
 	$TerminalResult = array();
 	$groupAverage = array();
-	$totalAverage = '';
-	$total='';
+	$totalAverage = 0;
+	$total=0;
 	$Regno=getStudentRegno($Studentid);
 	
 	$firstname=$lastname='';
@@ -1795,12 +1831,12 @@ function getPosition($Studentid,$class,$Subject,$session,$term){
 			$lastname = $stud['lastname'];
 			$regno = $stud['regno'];
 
-			$Test1 = getTest1($studentid,$class,$Subject,$session,$term);
+			$Test1 = (int)(getTest1($studentid,$class,$Subject,$session,$term));
 			
-			$Test2 = getTest2($studentid,$class,$Subject,$session,$term);
-			$Exam = getExam($studentid,$class,$Subject,$session,$term);
-			$Total = $Test1+$Test2+$Exam;
-			$average = getAverage($studentid,$class,$Subject,$session,$term);
+			$Test2 = (int)(getTest2($studentid,$class,$Subject,$session,$term));
+			$Exam = (int)(getExam($studentid,$class,$Subject,$session,$term));
+			$Total = (int)($Test1+$Test2+$Exam);
+			$average = floatval(getAverage($studentid,$class,$Subject,$session,$term));
 
 			///////////////////////////////////////////////
 			//
@@ -1832,12 +1868,12 @@ function getEachStudentResultByTerm($Studentid,$class,$session,$term){
 		$lastname = getStudentLastname($Studentid);
 		$regno = getStudentRegno($Studentid);
 		$Subject = $sub['subject'];
-		$Test1 = getTest1($Studentid,$class,$Subject,$session,$term);
-		$Test2 = getTest2($Studentid,$class,$Subject,$session,$term);
-		$Exam = getExam($Studentid,$class,$Subject,$session,$term);
-		$Total = $Test1+$Test2+$Exam;
-		$average = getAverage($Studentid,$class,$Subject,$session,$term);
-		$grade = getGrade($average);
+		$Test1 = (int)(getTest1($Studentid,$class,$Subject,$session,$term));
+		$Test2 = (int)(getTest2($Studentid,$class,$Subject,$session,$term));
+		$Exam = (int)(getExam($Studentid,$class,$Subject,$session,$term));
+		$Total = (int)($Test1+$Test2+$Exam);
+		$average = floatval(getAverage($Studentid,$class,$Subject,$session,$term));
+		$grade = getGrade((int)($average));
 		$position = getPosition($Studentid,$class,$Subject,$session,$term);
 		//$comment = getStudentResultComment($studentid,$classid,$termid,$sessionid);
 
@@ -1855,7 +1891,7 @@ function getEachStudentResultByTerm($Studentid,$class,$session,$term){
 					'test1' =>$Test1,
 					'test2' =>$Test2,
 					'exam' =>$Exam,
-					'total' =>$Total,					
+					'total' =>$Total,
 					'grade' =>$grade,
 					'position' =>$position,
 					'comment1' =>$comment1,
@@ -1911,11 +1947,11 @@ function getClassRankingByTerm($class,$session,$term){
 				foreach ($subjects as $sub) {
 					//get test1, test2, exam
 					$Subject = $sub['subject'];
-					$Test1 = getTest1($studentid,$class,$Subject,$session,$term);
-					$Test2 = getTest2($studentid,$class,$Subject,$session,$term);
-					$Exam = getExam($studentid,$class,$Subject,$session,$term);
-					$Total = $Test1+$Test2+$Exam;
-					$average = getAverage($studentid,$class,$Subject,$session,$term);
+					$Test1 = (int)(getTest1($studentid,$class,$Subject,$session,$term));
+					$Test2 = (int)(getTest2($studentid,$class,$Subject,$session,$term));
+					$Exam = (int)(getExam($studentid,$class,$Subject,$session,$term));
+					$Total = (int)($Test1+$Test2+$Exam);
+					$average = floatval(getAverage($studentid,$class,$Subject,$session,$term));
 
 					///////////////////////////////////////////////
 					//
@@ -1942,7 +1978,7 @@ function getClassRankingByTerm($class,$session,$term){
 			//Collect average rank
 			//call a function
 			//$groupAverage[$regno]=$totalAverage;
-			$avgT = getGroupedAverage($class,$session,$term);
+			$avgT = floatval(getGroupedAverage($class,$session,$term));
 			$rank_for = $regno;
 			$rankt = getrank($avgT,$rank_for);
 
@@ -2030,11 +2066,11 @@ function getStudentRankingInClassByTerm($id,$class,$session,$term){
 				foreach ($subject as $sub) {
 					//get test1, test2, exam
 					$Subject = $sub['subject'];
-					$Test1 = getTest1($studentid,$class,$Subject,$session,$term);
-					$Test2 = getTest2($studentid,$class,$Subject,$session,$term);
-					$Exam = getExam($studentid,$class,$Subject,$session,$term);
-					$Total = $Test1+$Test2+$Exam;
-					$average = getAverage($studentid,$class,$Subject,$session,$term);
+					$Test1 = (int)(getTest1($studentid,$class,$Subject,$session,$term));
+					$Test2 = (int)(getTest2($studentid,$class,$Subject,$session,$term));
+					$Exam = (int)(getExam($studentid,$class,$Subject,$session,$term));
+					$Total = (int)($Test1+$Test2+$Exam);
+					$average = floatval(getAverage($studentid,$class,$Subject,$session,$term));
 
 					///////////////////////////////////////////////
 					//
@@ -2042,13 +2078,11 @@ function getStudentRankingInClassByTerm($id,$class,$session,$term){
 
 				}
 			}//
-			
 			$count = sizeof($subjectStack);
 			$sum_arr = array_sum($subjectStack);
 			// echo "Arrays of Subjects Stacks <br>";
 			// echo "<br>";
 			// print_r($subjectStack);
-			
 			//sum all the averages together
 			// $count = sizeof($subjectStack);
 			// $sum_arr = array_sum($subjectStack);
@@ -2058,8 +2092,8 @@ function getStudentRankingInClassByTerm($id,$class,$session,$term){
 			// $totalAverage = round(($total/$count),2);
 			//$ca ='' ;
 			$totalAverage = round(($sum_arr/$count),2);
-			
-			
+
+
 			//Collect average rank
 			//call a function
 			//$groupAverage[$regno]=$totalAverage;
@@ -2074,7 +2108,7 @@ function getStudentRankingInClassByTerm($id,$class,$session,$term){
 
 			//Students record for the term
 
-			$ClassResultByRanking[] = array(					
+			$ClassResultByRanking[] = array(
 					'id' => $studentid,
 					'firstname' => $firstname,
 					'lastname' => $lastname,
@@ -2096,7 +2130,7 @@ function getStudentRankingInClassByTerm($id,$class,$session,$term){
 			if($rank['id']==$id){
 				return $rank['position'];
 			}
-			
+
 		}
 
 	}
@@ -2128,11 +2162,11 @@ function getGroupedAverage($class,$session,$term){
 				foreach ($subjects as $sub) {
 					//get test1, test2, exam
 					$Subject = $sub['subject'];
-					$Test1 = getTest1($studentid,$class,$Subject,$session,$term);
-					$Test2 = getTest2($studentid,$class,$Subject,$session,$term);
-					$Exam = getExam($studentid,$class,$Subject,$session,$term);
-					$Total = $Test1+$Test2+$Exam;
-					$average = getAverage($studentid,$class,$Subject,$session,$term);
+					$Test1 = (int)(getTest1($studentid,$class,$Subject,$session,$term));
+					$Test2 = (int)(getTest2($studentid,$class,$Subject,$session,$term));
+					$Exam = (int)(getExam($studentid,$class,$Subject,$session,$term));
+					$Total = (int)($Test1+$Test2+$Exam);
+					$average = floatval(getAverage($studentid,$class,$Subject,$session,$term));
 
 					///////////////////////////////////////////////
 					//
@@ -2159,7 +2193,7 @@ function getGroupedAverage($class,$session,$term){
 }
 
 function getClassResultRankBySubjectByTerm($class,$subject,$session,$term){
-	$ClassResultStack=array();$Total='';
+	$ClassResultStack=array();$Total=0;
 	$student = getStudentByClass($class);
 	$regno='';
 	
@@ -2168,13 +2202,19 @@ function getClassResultRankBySubjectByTerm($class,$subject,$session,$term){
 		$firstname = $stud['firstname'];
 		$lastname = $stud['lastname'];
 		$regno = $stud['regno'];
-		$Test1 = getTest1($studentid,$class,$subject,$session,$term);
+		$Test1 = (int)(getTest1($studentid,$class,$subject,$session,$term));
 		//echo $subject.'<br>';
-		$Test2 = getTest2($studentid,$class,$subject,$session,$term);
-		$Exam = getExam($studentid,$class,$subject,$session,$term);
-		$Total = $Test1+$Test2+$Exam;
-		$average = getAverage($studentid,$class,$subject,$session,$term);
-		$grade = getGrade($average);
+		$Test2 = (int)(getTest2($studentid,$class,$subject,$session,$term));
+		$Exam = (int)(getExam($studentid,$class,$subject,$session,$term));
+		
+		if (is_numeric($Test1) && is_numeric($Test2) && is_numeric($Exam)) {
+			$Total = floatval($Test1+$Test2+$Exam);
+		  } else {
+			// do some error handling...
+			echo "Total not gotten, Non Numeric";
+		  }
+		$average = floatval(getAverage($studentid,$class,$subject,$session,$term));
+		$grade = floatval(getGrade($average));
 
 		//echo $regno.'-'.$average.'<br>';
 		//echo "<br>";
@@ -2206,15 +2246,15 @@ function getClassResultRankBySubjectByTerm($class,$subject,$session,$term){
 			$lastname = getStudentLastnameByRegNo($roll_n);
 			$regno = $roll_n;
 			$studentid = getStudentIdByRegNo($roll_n);
-			$Test1 = getTest1($studentid,$class,$subject,$session,$term);
-			$Test2 = getTest2($studentid,$class,$subject,$session,$term);
-			$Exam = getExam($studentid,$class,$subject,$session,$term);
+			$Test1 = (int)(getTest1($studentid,$class,$subject,$session,$term));
+			$Test2 = (int)(getTest2($studentid,$class,$subject,$session,$term));
+			$Exam = (int)(getExam($studentid,$class,$subject,$session,$term));
 			$Total = $Test1+$Test2+$Exam;
-			$average = getAverage($studentid,$class,$subject,$session,$term);
-			$grade = getGrade($average);
+			$average = floatval(getAverage($studentid,$class,$subject,$session,$term));
+			$grade = floatval(getGrade($average));
 
 		    $real_pos += 1;// Natural position.
-		    
+
 		    $pos = ($prev_score != $score) ? $real_pos : $pos;// If I have same score, I have same position in ranking, otherwise, natural position.
 		    $ranking = OrdinalNumberSuffix($pos);
 		    // $result[$roll_n] = array(

@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
       
     
       //Create query
-    $sql="SELECT * FROM student WHERE username='$UserName' AND password='$Password' AND status='Active'";//Password
+    $sql="SELECT * FROM student WHERE username='$UserName' /*AND password='$Password'*/ AND status='Active'";//Password
     $result=mysqli_query($servr, $sql);
     
       //Check whether the query was successful or not
@@ -183,7 +183,6 @@ if(isset($_POST['login'])){
 										<input type="password" id="password" name="password" class="form-control not-dark" />
 									</div>
 									<div class="col_full nobottommargin">
-									
 										<button type="submit" name="login" class="t400 capitalize button button-border button-light button-circle nomargin" value="submit">Sign In</button>
 									</div>
 								</form>

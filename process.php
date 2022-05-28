@@ -2,7 +2,7 @@
 $fullname=$class=$subject=$subjecta=$session=$term=$type=$msg=$msgs=$dt=$Grade=$regno =$enrolled ='';
 $Score=$Result=$score=$scorea=$classResult=$Sno=$termResult=$ClassResult=$studentid=$n=$Stud='';
 $length =$code=$code1=$rank=$ranker=$firstname=$middlename=$lastname=$gender='';
-$dateofbirth =$rank_for=$arrayt=$username=$password=$email=$phone=$degree=$salary=$address=$type=$role=$status=$reason='';
+$dateofbirth =$rank_for=$arrayt=$username=$password=$email=$phone=$degree=$salary=$address=$type=$role=$status=$reason=$uid='';
 
 $UserName=$Password='';
 $target_dir = "";
@@ -10,10 +10,10 @@ $target_file = "";
 $content = "";
 $uploadOk = 1;
 $imageFileType = "";
-$name=""; 
-$email=""; 
-$phone=""; 
-$fname=""; 
+$name="";
+$email="";
+$phone="";
+$fname="";
 $tmpName ="";
 $fileSize ="";
 $fileType = "";
@@ -21,9 +21,12 @@ $fileType = "";
 $uid=$studreg=$class=$term=$acadyr=$comment=$staffrole="";
 
 
+
 //$fullname,$class,$subject,$session,$term,$type,$score
 if(isset($_POST['register'])){
 	//$length = 4;
+	$uid = $_SESSION['uid'];
+    $sid = 1;
 	$n = new RandomStringGenerator();
 	//$code1 = $code->generateNumericString( $length );
 	$firstname = clean($_POST['firstname']);
@@ -111,7 +114,7 @@ if(isset($_POST['register'])){
 	    }
 	}
 
-	$msg = register($firstname,$middlename,$lastname,$gender,$dateofbirth,$class,$session,$term,$code,$username,$password,$email,$phone,$degree,$salary,$address,$type,$role,$status,$reason,$target_file);
+	$msg = register($uid,$sid,$firstname,$middlename,$lastname,$gender,$dateofbirth,$class,$session,$term,$code,$username,$password,$email,$phone,$degree,$salary,$address,$type,$role,$status,$reason,$target_file);
 }
 
 
